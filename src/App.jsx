@@ -9,45 +9,27 @@ import CancelledOrders from './pages/orders/CancelledOrders';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
-        {/* Navigation */}
+      <div className="min-h-screen bg-gray-50 text-gray-800">
         <Navbar />
 
-        {/* Practical Sub-header */}
-        <div className="bg-white border-b border-slate-200 py-3 px-4 shadow-xs">
-          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-slate-600 gap-1">
-            <div>
-              <span className="font-semibold text-slate-800">Practical 2:</span> Nested Routing (Order Management with &lt;Outlet /&gt;)
-            </div>
-            <div className="text-amber-800 font-medium">
-              ● Unit 4 – Client-Side Routing
-            </div>
+        <div className="max-w-4xl mx-auto p-6">
+          <div className="mb-4">
+            <h2 className="text-xl font-bold text-gray-800">Practical 2: Nested Routing</h2>
+            <p className="text-sm text-gray-500">Order Management with nested routes using &lt;Outlet /&gt;</p>
           </div>
-        </div>
 
-        {/* Main Content Area */}
-        <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8">
           <Routes>
             <Route path="/" element={<Home />} />
             
-            {/* Nested Route Definition */}
+            {/* Nested Route */}
             <Route path="/orders" element={<Orders />}>
-              {/* Default redirect or index to current orders */}
               <Route index element={<Navigate to="current" replace />} />
               <Route path="current" element={<CurrentOrders />} />
               <Route path="history" element={<OrderHistory />} />
               <Route path="cancelled" element={<CancelledOrders />} />
             </Route>
-
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-          React Practical 2 | E-commerce Order Management Nested Routing
-        </footer>
+        </div>
       </div>
     </BrowserRouter>
   );

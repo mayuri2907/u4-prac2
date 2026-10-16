@@ -1,32 +1,21 @@
-# Practical 2: Nested Routing (Unit 4)
+# Practical 2: Nested Routing
 
 ## Aim
-Develop an E-commerce Order Management application where the Orders page contains nested routes such as **Current Orders**, **Order History**, and **Cancelled Orders**.
+Develop an E-commerce Order Management application where the Orders page contains nested routes such as Current Orders, Order History, and Cancelled Orders.
 
-## GitHub Repository
-`https://github.com/mayuri2907/u4-prac2.git`
+## Description
+This practical demonstrates nested routing using `react-router-dom`. The parent `/orders` route contains an `<Outlet />` component where child routes (`/orders/current`, `/orders/history`, and `/orders/cancelled`) are rendered depending on user selection.
 
-## Concepts Implemented
-- **Nested Routing**: Defined `<Route path="/orders" element={<Orders />}>` enclosing child routes:
-  - `path="current"` -> `<CurrentOrders />`
-  - `path="history"` -> `<OrderHistory />`
-  - `path="cancelled"` -> `<CancelledOrders />`
-- **&lt;Outlet /&gt;**: Renders the active child route component inside the parent layout.
-- **&lt;NavLink&gt;**: Provides active tab highlighting automatically.
-- **Tailwind CSS**: Light-themed modern interface.
+## Components Created
+- `Navbar.jsx`: Top navigation.
+- `Home.jsx`: Welcome landing page.
+- `Orders.jsx`: Parent orders page containing sub-navigation tabs and `<Outlet />`.
+- `CurrentOrders.jsx`: Shows in-transit and active orders.
+- `OrderHistory.jsx`: Shows completed delivered orders.
+- `CancelledOrders.jsx`: Shows cancelled orders.
 
-## How to Run Locally
+## How to Run
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Run dev server
 npm run dev
-```
-
-## Push to GitHub
-```bash
-git remote add origin https://github.com/mayuri2907/u4-prac2.git
-git branch -M main
-git push -u origin main
 ```

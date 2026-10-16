@@ -1,67 +1,36 @@
 function CurrentOrders() {
-  const currentOrders = [
-    {
-      id: 'ORD-9821',
-      product: 'Logitech MX Master 3S Wireless Mouse',
-      date: '14 Oct 2026',
-      total: '₹7,499',
-      status: 'Out for Delivery',
-      eta: 'Expected by Today, 6:00 PM',
-      statusColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    },
-    {
-      id: 'ORD-9825',
-      product: 'Keychron K2 Mechanical Keyboard (Hot-swappable)',
-      date: '15 Oct 2026',
-      total: '₹8,299',
-      status: 'Shipped (In Transit)',
-      eta: 'Expected by 18 Oct 2026',
-      statusColor: 'bg-amber-50 text-amber-700 border-amber-200',
-    },
-    {
-      id: 'ORD-9830',
-      product: 'Anker 65W GaN Fast Charger with Type-C Cable',
-      date: '16 Oct 2026',
-      total: '₹2,499',
-      status: 'Order Placed & Packed',
-      eta: 'Expected by 20 Oct 2026',
-      statusColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    },
+  const orders = [
+    { id: 101, item: 'Wireless Mouse', qty: 1, price: '₹699', status: 'In Transit' },
+    { id: 102, item: 'USB-C Cable', qty: 2, price: '₹399', status: 'Dispatched' },
+    { id: 103, item: 'Laptop Stand', qty: 1, price: '₹1,299', status: 'Processing' },
   ];
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold text-slate-800">Active Shipments</h3>
-        <span className="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full font-medium">
-          {currentOrders.length} In-Progress
-        </span>
-      </div>
-
-      <div className="space-y-3">
-        {currentOrders.map((order) => (
-          <div
-            key={order.id}
-            className="p-4 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-xs"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-              <div>
-                <span className="text-xs font-mono font-bold text-slate-500">{order.id}</span>
-                <h4 className="text-base font-semibold text-slate-800">{order.product}</h4>
-              </div>
-              <div className="text-right">
-                <span className="text-base font-bold text-slate-800">{order.total}</span>
-                <span className={`block text-xs font-semibold px-2 py-0.5 rounded border mt-1 ${order.statusColor}`}>
-                  {order.status}
-                </span>
-              </div>
-            </div>
-            <div className="pt-2 flex flex-col sm:flex-row justify-between text-xs text-slate-500">
-              <span>Placed on: {order.date}</span>
-              <span className="font-medium text-emerald-700">{order.eta}</span>
-            </div>
-          </div>
-        ))}
+      <h3 className="font-semibold text-gray-800">Current Active Orders</h3>
+      <div className="overflow-x-auto">
+        <table className="w-full text-left text-sm border border-gray-200">
+          <thead className="bg-gray-50 text-gray-600">
+            <tr>
+              <th className="p-3 border-b">Order ID</th>
+              <th className="p-3 border-b">Item</th>
+              <th className="p-3 border-b">Quantity</th>
+              <th className="p-3 border-b">Price</th>
+              <th className="p-3 border-b">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200 text-gray-700">
+            {orders.map((o) => (
+              <tr key={o.id}>
+                <td className="p-3 font-mono">#{o.id}</td>
+                <td className="p-3">{o.item}</td>
+                <td className="p-3">{o.qty}</td>
+                <td className="p-3">{o.price}</td>
+                <td className="p-3 text-blue-600 font-medium">{o.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
